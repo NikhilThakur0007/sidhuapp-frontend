@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
+
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -20,7 +20,7 @@ import { ToastContainer } from "react-toastify";
 import GoogleSign from "./GoogleSign";
 import GoogleIcon from "@mui/icons-material/Google";
 import LoginLoader from "../../components/Loader/LoginLoader";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
@@ -62,73 +62,67 @@ function SignUp(props) {
         <ToastContainer autoClose={1000} />
         <Container component="main" maxWidth="xs">
           <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Sign in
-            </Typography>
+          <form onSubmit={handleSubmit}>
             <Box
-              component="form"
-              onSubmit={handleSubmit}
-              noValidate
-              sx={{ mt: 1 }}
+              sx={{
+                marginTop: 8,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
             >
-              <TextField
-                required
-                margin="normal"
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-              />
-              <TextField
-                required
-                margin="normal"
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-              {/* <FormControlLabel
+              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+                <LockOutlinedIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
+              <Box sx={{ mt: 1 }}>
+                <TextField
+                  required
+                  margin="normal"
+                  fullWidth
+                  type="email"
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+                />
+                <TextField
+                  required
+                  margin="normal"
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  min={6}
+                  id="password"
+                  autoComplete="current-password"
+                />
+                {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             /> */}
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In
-              </Button>
-              <Link to="/Signin">
                 <Button
-                  type="button"
+                  type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mb: 2 }}
+                  sx={{ mt: 3, mb: 2 }}
                 >
-                  Sign Up
+                  Sign In
                 </Button>
-              </Link>
-              {/* <h6 style={{ textAlign: "center" }}> Sign in with Google </h6> */}
 
-              <GoogleSign />
+                {/* <h6 style={{ textAlign: "center" }}> Sign in with Google </h6> */}
+              </Box>
             </Box>
-          </Box>
+          </form>
+          <Link to="/register">
+            <Button type="button" fullWidth variant="contained" sx={{ mb: 2 }}>
+              Sign Up
+            </Button>
+          </Link>
+          <GoogleSign />
           <LoginLoader visible={props.loading} />
           {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
         </Container>

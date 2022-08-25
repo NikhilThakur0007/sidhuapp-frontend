@@ -23,7 +23,9 @@ export default function Products(props) {
   const getproducts = async () => {
     try {
       setLoading(true);
-      const res = await axios("http://localhost:8080/products/getproducts");
+      const res = await axios(
+        "https://sidhuapp.herokuapp.com/products/getproducts"
+      );
       console.log(res.data);
 
       let status = res.data.statusDescription.statusCode;
@@ -58,7 +60,7 @@ export default function Products(props) {
     try {
       setopen(true);
       const deletee = await axios.delete(
-        `http://localhost:8080/products/deleteproduct/${id}`
+        `https://sidhuapp.herokuapp.com/products/deleteproduct/${id}`
       );
       console.log(deletee);
 
@@ -95,7 +97,9 @@ export default function Products(props) {
     e.preventDefault();
     let key = e.target.value;
     if (key) {
-      const res = await axios(`http://localhost:8080/products/search/${key}`);
+      const res = await axios(
+        `https://sidhuapp.herokuapp.com/products/search/${key}`
+      );
       console.log(res);
       if (res) {
         await setProducts1(res.data.results);

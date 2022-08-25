@@ -11,7 +11,7 @@ export default function Index() {
     <>
       <Routes>
         <Route path="/" element={<SignUp />} />
-        <Route path="/Signin" element={<LoginUp />} />
+        <Route path="/register" element={<LoginUp />} />
         {/* <Route path="*" element={<Page404 />} /> */}
         {/* <Route path="/forget/password" element={<Forgot />} /> */}
         {/* <Route path="/sign" element={<SignUp />} /> */}

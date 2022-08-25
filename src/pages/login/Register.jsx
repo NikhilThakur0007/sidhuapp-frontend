@@ -20,14 +20,17 @@ export default function Loginup() {
     try {
       e.preventDefault();
 
-      const res = await axios.post("http://localhost:8080/signup", {
-        name,
-        email,
-        password,
-        city,
-        state,
-        address,
-      });
+      const res = await axios.post(
+        "https://sidhuapp.herokuapp.com/api/auth/signup",
+        {
+          name,
+          email,
+          password,
+          city,
+          state,
+          address,
+        }
+      );
 
       const status = await res.data.statusDescription.statusCode;
       const statusMessage = await res.data.statusDescription.statusMessage;
@@ -67,7 +70,7 @@ export default function Loginup() {
                       Sign up
                     </p>
 
-                    <form class="mx-1 mx-md-4">
+                    <form onSubmit={getUser} class="mx-1 mx-md-4">
                       <div class="d-flex flex-row align-items-center mb-4">
                         <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                         <div class="form-outline flex-fill mb-0">
@@ -171,7 +174,7 @@ export default function Loginup() {
 
                       <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <button
-                          onClick={getUser}
+                          // onClick={getUser}
                           type="submit"
                           class="btn btn-primary btn-lg"
                         >

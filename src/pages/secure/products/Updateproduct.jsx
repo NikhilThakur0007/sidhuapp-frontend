@@ -21,7 +21,7 @@ export default function Updateproduct() {
     try {
       setopen(true);
       const res = await axios.put(
-        `http://localhost:8080/products/updateproduct/${params.id}`,
+        `https://sidhuapp.herokuapp.com/products/updateproduct/${params.id}`,
         {
           name: name,
           brand: brand,
@@ -58,7 +58,7 @@ export default function Updateproduct() {
   const getproductdetails = async () => {
     try {
       const res = await axios(
-        `http://localhost:8080/products/products/${params.id}`
+        `https://sidhuapp.herokuapp.com/products/products/${params.id}`
       );
       setName(res.data.result.name);
       setBrand(res.data.result.brand);
